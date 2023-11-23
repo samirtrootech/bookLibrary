@@ -10,22 +10,22 @@
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en/) (version >= 18)
-- [Npm](https://yarnpkg.com/) (version >= ^1.22.19)
+- [Npm](https://www.npmjs.com/) (version >= 9.6.0)
 
 ## Project configuration
 
 1. Clone the repository
 
 ```bash
-$ git clone 
+$ git clone https://github.com/nishit-trootech/bookLibrary.git
 ```
 
 2. Install dependencies
 
 ```bash
-$ cd library/
+$ cd bookLibrary/
 
-$ yarn
+$ npm install
 ```
 
 3. Configure variables
