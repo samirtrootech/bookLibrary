@@ -53,6 +53,13 @@ export class BooksController {
 
   @Delete(':id')
   async deleteBook(@Param('id') id: number) {
-    return this.booksService.deleteBook(id);
+    const response = await this.booksService.deleteBook(id);
+
+    if(response) {
+      return {
+        "message": "Record Deleted successfully",
+        "statusCode": 200
+      }
+    }
   }
 }

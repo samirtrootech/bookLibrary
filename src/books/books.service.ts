@@ -57,8 +57,12 @@ export class BooksService {
    * 
   */
   async updateBook(id: number, updateBookDto: UpdateBookDto): Promise<Book> {
+
+    const book = await this.getBookById(id);
+    if (!book) {
+      throw new NotFoundException(`Book with ID ${id} not found`);
+    }
     try {
-      const book = await this.getBookById(id);
       book.title = updateBookDto.title;
       return book.save();
     } catch (err) {
@@ -72,10 +76,13 @@ export class BooksService {
    * @Param {Integer} id
    * 
   */
-  async deleteBook(id: number): Promise<void> {
+  async deleteBook(id: number): Promise<Boolean | any> {
+    const book = await this.getBookById(id);
+    if (!book) {
+      throw new NotFoundException(`Book with ID ${id} not found`);
+    }
     try {
-      const book = await this.getBookById(id);
-      await book.destroy();
+      return Book.destroy({ where: { id: id } });
     } catch (err) {
       console.log("Error in delete Book => ", err);
     }
